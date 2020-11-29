@@ -2,14 +2,14 @@
 
 Show how s-curve speed type can be obtained.
 
-![](data/img/demo.gif)
+<img src="data/img/demo.gif" width=600/>
 
 references:
 - [How to get sinusoidal s-curve for a stepper motor](http://fightpc.blogspot.com/2018/04/how-to-get-sinusoidal-s-curve-for.html)
 
 ## Description
 
-This app is not intended to produce scurve speed in realtime for constrained devices for those an approach is already explained in the article cited in references above, but wants to explain how much acceleration can be given to reach a target speed in a given time using a scurve speed profile.
+This app is not intended to produce scurve speed in realtime for constrained devices for those an approach is already explained in the article cited in references above, but wants to explain how much acceleration is required to reach a target speed in a given time using a s-curve speed profile.
 
 I used the wonderful [AngouriMath](https://github.com/asc-community/AngouriMath) library to execute calculus in the code to demostrate the process described following, but final formula can be used of course.
 
