@@ -48,19 +48,12 @@ namespace scurve_speed_eval
             var accelFn = "1-cos(x)";
             sb.AppendLine($"accelFn ---> {accelFn}");
 
-            // accelOverDuration =
-            // 1-\cos\left(\frac{x}{duration}\cdot 2\cdot \pi\right)
-
             var accelOverDuration = accelFn.Substitute("x", $"x/duration*2*pi").Simplify();            
             sb.AppendLine($"accelOverDuration ---> {accelOverDuration}");
 
-            // realAccel =
-            // \frac{targetspeed}{duration}\cdot \left(1-\cos\left(\frac{x}{duration}\cdot 2\cdot \pi\right)\right)
             var realAccel = $"targetspeed / {accelOverDuration.Integrate("x").Substitute("x", "duration").Simplify()} * ({accelOverDuration})".Simplify();
             sb.AppendLine($"realAccel ---> {realAccel}");
 
-            // realSpeed =
-            // \frac{\frac{-1}{2}\cdot \sin\left(\frac{2\cdot \pi\cdot x}{duration}\right)\cdot duration\cdot targetspeed}{duration\cdot \pi}+\frac{targetspeed\cdot x}{duration}
             var realSpeed = realAccel.Integrate("x").Simplify();
             sb.AppendLine($"realSpeed ---> {realSpeed}");
 
