@@ -52,13 +52,13 @@ $$ -->
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealSpeed%3D%5Cfrac%7B%5Cfrac%7B-1%7D%7B2%7D%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bduration%7D%5Cright)%5Ccdot%20duration%5Ccdot%20targetspeed%7D%7Bduration%5Ccdot%20%5Cpi%7D%2B%5Cfrac%7Btargetspeed%5Ccdot%20x%7D%7Bduration%7D"></div> 
 <br/>
 
-[1]: https://github.com/devel0/scurve-speed-eval/blob/9c65f18c27b74d418018a15448c5a7a3aaed0ebf/Program.cs#L48
+[1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48
 
-[2]: https://github.com/devel0/scurve-speed-eval/blob/9c65f18c27b74d418018a15448c5a7a3aaed0ebf/Program.cs#L54
+[2]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L51
 
-[3]: https://github.com/devel0/scurve-speed-eval/blob/9c65f18c27b74d418018a15448c5a7a3aaed0ebf/Program.cs#L59
+[3]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L54
 
-[4]: https://github.com/devel0/scurve-speed-eval/blob/9c65f18c27b74d418018a15448c5a7a3aaed0ebf/Program.cs#L64
+[4]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L57
 
 ## Prerequisites
 
