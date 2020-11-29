@@ -2,7 +2,7 @@
 
 Show how s-curve speed type can be obtained.
 
-<img src="data/img/demo.gif" width=600/>
+<img src="data/img/demo.gif" width="90%"/>
 
 references:
 - [How to get sinusoidal s-curve for a stepper motor](http://fightpc.blogspot.com/2018/04/how-to-get-sinusoidal-s-curve-for.html)
