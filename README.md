@@ -22,18 +22,24 @@ where its integral ( the speed ) reach 2pi for x=2pi
 - [accelOverDuration][2] was computed to make the accel function applicable to the `[0..duration]` domain instead of the original `[0..2pi]`
 
 <!-- $$
+\LARGE
 accelOverDuration=1-\cos\left(\frac{x}{duration}\cdot 2\cdot \pi\right)
 $$ --> 
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=accelOverDuration%3D1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)"></div>
+<br/>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLARGE%0AaccelOverDuration%3D1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)"></div>
+<br/>
 
 - I want that integral of the accel, the speed, become `targetspeed` for the accelOverDuration when `x` becomes `duration` so [a factor][3] is computed to obtain *realAccel*:
 
 <!-- $$
+\LARGE
 realAccel=\frac{targetspeed}{duration}\cdot \left(1-\cos\left(\frac{x}{duration}\cdot 2\cdot \pi\right)\right)
 $$ --> 
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=realAccel%3D%5Cfrac%7Btargetspeed%7D%7Bduration%7D%5Ccdot%20%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)%5Cright)"></div>
+<br/>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLARGE%0ArealAccel%3D%5Cfrac%7Btargetspeed%7D%7Bduration%7D%5Ccdot%20%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)%5Cright)"></div>
+<br/>
 
 - The *realSpeed* results as the [integral of realAccel][4]:
 
@@ -41,7 +47,9 @@ $$ -->
 realSpeed=\frac{\frac{-1}{2}\cdot \sin\left(\frac{2\cdot \pi\cdot x}{duration}\right)\cdot duration\cdot targetspeed}{duration\cdot \pi}+\frac{targetspeed\cdot x}{duration}
 $$ --> 
 
+<br/>
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=realSpeed%3D%5Cfrac%7B%5Cfrac%7B-1%7D%7B2%7D%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bduration%7D%5Cright)%5Ccdot%20duration%5Ccdot%20targetspeed%7D%7Bduration%5Ccdot%20%5Cpi%7D%2B%5Cfrac%7Btargetspeed%5Ccdot%20x%7D%7Bduration%7D"></div>
+<br/>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/9c65f18c27b74d418018a15448c5a7a3aaed0ebf/Program.cs#L48
 
