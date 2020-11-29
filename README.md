@@ -75,14 +75,6 @@ cd scurve-speed-eval
 dotnet run
 ```
 
-## Description
-
-```sh
-dotnet test
-```
-
-- to debug from vscode just run debug test from code lens balloon
-
 ## How this project was built
 
 ```sh
