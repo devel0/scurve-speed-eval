@@ -41,6 +41,19 @@ $$ -->
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealAccel%3D%5Cfrac%7Btargetspeed%7D%7Bduration%7D%5Ccdot%20%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)%5Cright)"></div>
 <br/>
 
+having accel a shape where the max accel is at x=duration/2 the above can simplified as
+
+<!-- $$
+\Large
+maxRealAccel=\frac{targetspeed}{duration}\times \left(1-\cos\left(\pi\right)\right)
+$$ --> 
+
+<br/>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AmaxRealAccel%3D%5Cfrac%7Btargetspeed%7D%7Bduration%7D%5Ctimes%20%5Cleft(1-%5Ccos%5Cleft(%5Cpi%5Cright)%5Cright)"></div>
+<br/>
+
+*example*: targetspeed=1r/s ; duration=0.1s ; maxRealAccel=3.2r/s2
+
 - The *realSpeed* results as the [integral of realAccel][4]:
 
 <!-- $$
