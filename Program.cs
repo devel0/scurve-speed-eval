@@ -50,8 +50,8 @@ namespace scurve_speed_eval
 
             var accelOverDuration = accelFn.Substitute("x", $"x/duration*2*pi").Simplify();            
             sb.AppendLine($"accelOverDuration ---> {accelOverDuration}");
-
-            var realAccel = $"targetspeed / {accelOverDuration.Integrate("x").Substitute("x", "duration").Simplify()} * ({accelOverDuration})".Simplify();
+            
+            var realAccel = $"targetspeed / ({accelOverDuration.Integrate("x").Substitute("x", "duration").Simplify()}) * ({accelOverDuration})".Simplify();
             sb.AppendLine($"realAccel ---> {realAccel}");
 
             var realSpeed = realAccel.Integrate("x").Simplify();
