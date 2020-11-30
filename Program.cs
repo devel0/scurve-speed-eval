@@ -55,7 +55,7 @@ namespace scurve_speed_eval
             sb.AppendLine($"realAccel ---> {realAccel}");
 
             var realSpeed = realAccel.Integrate("x").Simplify();
-            sb.AppendLine($"realSpeed ---> {realSpeed}");
+            sb.AppendLine($"realSpeed ---> {realSpeed}");            
 
             var t = Duration.FromSeconds(0);
             var t_step = m.Duration / m.RenderPts;
