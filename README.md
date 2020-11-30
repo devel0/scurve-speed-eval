@@ -33,10 +33,11 @@ $$ -->
 - accelOverDuration integral produce a speed that we need to scale in order to fit with required targetspeed; [a factor][3] is computed to obtain *realAccel*:
 
 <!-- $$
+\Large
 realAccel = \frac{targetspeed}{\int_0^{duration} accelOverDuration}\cdot accelOverDuration
 $$ --> 
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=realAccel%20%3D%20%5Cfrac%7Btargetspeed%7D%7B%5Cint_0%5E%7Bduration%7D%20accelOverDuration%7D%5Ccdot%20accelOverDuration"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealAccel%20%3D%20%5Cfrac%7Btargetspeed%7D%7B%5Cint_0%5E%7Bduration%7D%20accelOverDuration%7D%5Ccdot%20accelOverDuration"></div> 
 
 <!-- $$
 \Large
