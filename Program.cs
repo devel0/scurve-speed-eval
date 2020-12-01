@@ -30,7 +30,7 @@ namespace scurve_speed_eval
     {
         public Duration Duration { get; set; } = Duration.FromSeconds(0.1);
         public RotationalSpeed TargetSpeed { get; set; } = RotationalSpeed.FromRevolutionsPerSecond(0.8);
-        public int RenderPts { get; set; } = 1000;
+        public int RenderPts { get; set; } = 100;
     }
 
     public class MainWindow : Win
