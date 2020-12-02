@@ -72,6 +72,25 @@ $$ -->
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealSpeed%3D%5Cfrac%7B%5Cfrac%7B-1%7D%7B2%7D%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bduration%7D%5Cright)%5Ccdot%20targetspeed%7D%7B%5Cpi%7D%2B%5Cfrac%7Btargetspeed%5Ccdot%20x%7D%7Bduration%7D"></div>
 <br/>
 
+- position from time `x`
+
+<!-- $$
+\Large
+pos = \frac{\cos\left(\frac{2\cdot \pi\cdot x}{duration}\right)\cdot {duration}\cdot targetspeed}{4\cdot {\pi}^{2}}+\frac{targetspeed\cdot {x}^{2}}{2\cdot duration}
+$$ --> 
+
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos%20%3D%20%5Cfrac%7B%5Ccos%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bduration%7D%5Cright)%5Ccdot%20%7Bduration%7D%5Ccdot%20targetspeed%7D%7B4%5Ccdot%20%7B%5Cpi%7D%5E%7B2%7D%7D%2B%5Cfrac%7Btargetspeed%5Ccdot%20%7Bx%7D%5E%7B2%7D%7D%7B2%5Ccdot%20duration%7D"></div>
+
+- targetSpeed required from known distance to cover `pos` in given `duration` time
+
+<!-- $$
+\Large
+targetspeed=\frac{4 \cdot \pi^{2} \cdot pos}{duration \cdot (1+2 \pi)}
+$$ --> 
+
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Atargetspeed%3D%5Cfrac%7B4%20%5Ccdot%20%5Cpi%5E%7B2%7D%20%5Ccdot%20pos%7D%7Bduration%20%5Ccdot%20(1%2B2%20%5Cpi)%7D"></div>
+
+
 [1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48
 
 [2]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L51

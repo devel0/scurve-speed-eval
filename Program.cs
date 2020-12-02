@@ -44,18 +44,24 @@ namespace scurve_speed_eval
             pv.Model.Series.Clear();
 
             var sb = new StringBuilder();
-            
+
             var accelFn = "1-cos(x)";
             sb.AppendLine($"accelFn ---> {accelFn}");
 
-            var accelOverDuration = accelFn.Substitute("x", $"x/duration*2*pi").Simplify();            
+            var accelOverDuration = accelFn.Substitute("x", $"x/duration*2*pi").Simplify();
             sb.AppendLine($"accelOverDuration ---> {accelOverDuration}");
-            
+
             var realAccel = $"targetspeed / ({accelOverDuration.Integrate("x").Substitute("x", "duration").Simplify()}) * ({accelOverDuration})".Simplify();
             sb.AppendLine($"realAccel ---> {realAccel}");
 
             var realSpeed = realAccel.Integrate("x").Simplify();
-            sb.AppendLine($"realSpeed ---> {realSpeed}");            
+            sb.AppendLine($"realSpeed ---> {realSpeed}");
+
+            var pos = realSpeed.Integrate("x").Simplify();
+            sb.AppendLine($"pos ---> {pos}");
+
+            var targetspeed = $"{pos.ToString()}=pos".Substitute("x", "duration").Simplify().Solve("targetspeed");
+            sb.AppendLine($"targetspeed -> {targetspeed}");            
 
             var t = Duration.FromSeconds(0);
             var t_step = m.Duration / m.RenderPts;
