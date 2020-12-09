@@ -75,11 +75,11 @@ $$ -->
 
 <!-- $$
 \Large
-speed(x)=\frac{\frac{-1}{2}\cdot \sin\left(\frac{2\cdot \pi\cdot x}{d}\right)\cdot t}{\pi}+\frac{t\cdot x}{d}
+speed(x)=\frac{t\cdot x}{d}-\frac{\sin\left(\frac{2\cdot \pi\cdot x}{d}\right)\cdot t}{2\cdot\pi}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Aspeed(x)%3D%5Cfrac%7B%5Cfrac%7B-1%7D%7B2%7D%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bd%7D%5Cright)%5Ccdot%20t%7D%7B%5Cpi%7D%2B%5Cfrac%7Bt%5Ccdot%20x%7D%7Bd%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Aspeed(x)%3D%5Cfrac%7Bt%5Ccdot%20x%7D%7Bd%7D-%5Cfrac%7B%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bd%7D%5Cright)%5Ccdot%20t%7D%7B2%5Ccdot%5Cpi%7D"></div>
 <br/>
 
 - position from time `x`
