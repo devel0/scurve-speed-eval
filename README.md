@@ -87,11 +87,11 @@ $$ -->
 
 <!-- $$
 \Large
-targetspeed=\frac{4 \cdot \pi^{2} \cdot pos}{duration \cdot (1+2 \pi)}
+targetspeed=\frac{2 \cdot pos}{duration}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Atargetspeed%3D%5Cfrac%7B4%20%5Ccdot%20%5Cpi%5E%7B2%7D%20%5Ccdot%20pos%7D%7Bduration%20%5Ccdot%20(1%2B2%20%5Cpi)%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Atargetspeed%3D%5Cfrac%7B2%20%5Ccdot%20pos%7D%7Bduration%7D"></div>
 <br/>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48

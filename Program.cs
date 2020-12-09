@@ -60,7 +60,9 @@ namespace scurve_speed_eval
             var pos = realSpeed.Integrate("x").Simplify();
             sb.AppendLine($"pos ---> {pos}");
 
-            var targetspeed = $"{pos.ToString()}=pos".Substitute("x", "duration").Simplify().Solve("targetspeed");
+            var pos0 = pos.Substitute("x", 0).Simplify();            
+
+            var targetspeed = $"{pos.ToString()}-{pos0.ToString()}=pos".Substitute("x", "duration").Simplify().Solve("targetspeed");
             sb.AppendLine($"targetspeed -> {targetspeed}");            
 
             var t = Duration.FromSeconds(0);
