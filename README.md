@@ -97,11 +97,11 @@ $$ -->
 
 <!-- $$
 \Large
-t=\frac{2 \cdot p}{duration}
+t=\frac{2 \cdot p}{d}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0At%3D%5Cfrac%7B2%20%5Ccdot%20p%7D%7Bduration%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0At%3D%5Cfrac%7B2%20%5Ccdot%20p%7D%7Bd%7D"></div>
 <br/>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48
