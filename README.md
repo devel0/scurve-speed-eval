@@ -86,22 +86,22 @@ $$ -->
 
 <!-- $$
 \Large
-pos(x) = \frac{d \cdot t \cdot \left(\cos\left(\frac{2 \cdot \pi \cdot x}{d}\right)-1\right)}{4 \cdot \pi^2}+\frac{t \cdot x^2}{2 \cdot d}
+p(x) = \frac{d \cdot t \cdot \left(\cos\left(\frac{2 \cdot \pi \cdot x}{d}\right)-1\right)}{4 \cdot \pi^2}+\frac{t \cdot x^2}{2 \cdot d}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos(x)%20%3D%20%5Cfrac%7Bd%20%5Ccdot%20t%20%5Ccdot%20%5Cleft(%5Ccos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bd%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Bt%20%5Ccdot%20x%5E2%7D%7B2%20%5Ccdot%20d%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Ap(x)%20%3D%20%5Cfrac%7Bd%20%5Ccdot%20t%20%5Ccdot%20%5Cleft(%5Ccos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bd%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Bt%20%5Ccdot%20x%5E2%7D%7B2%20%5Ccdot%20d%7D"></div>
 <br/>
 
 - targetSpeed required from known distance to cover `pos` in given `duration` time
 
 <!-- $$
 \Large
-t=\frac{2 \cdot pos}{duration}
+t=\frac{2 \cdot p}{duration}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0At%3D%5Cfrac%7B2%20%5Ccdot%20pos%7D%7Bduration%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0At%3D%5Cfrac%7B2%20%5Ccdot%20p%7D%7Bduration%7D"></div>
 <br/>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48
