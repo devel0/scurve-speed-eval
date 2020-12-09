@@ -76,22 +76,11 @@ $$ -->
 
 <!-- $$
 \Large
-pos = \frac{\cos\left(\frac{2\cdot \pi\cdot x}{duration}\right)\cdot {duration}\cdot targetspeed}{4\cdot {\pi}^{2}}+\frac{targetspeed\cdot {x}^{2}}{2\cdot duration}
+pos = \frac{duration \cdot targetspeed \cdot \left(cos\left(\frac{2 \cdot \pi \cdot x}{duration}\right)-1\right)}{4 \cdot \pi^2}+\frac{targetspeed \cdot x^2}{2*duration}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos%20%3D%20%5Cfrac%7B%5Ccos%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bduration%7D%5Cright)%5Ccdot%20%7Bduration%7D%5Ccdot%20targetspeed%7D%7B4%5Ccdot%20%7B%5Cpi%7D%5E%7B2%7D%7D%2B%5Cfrac%7Btargetspeed%5Ccdot%20%7Bx%7D%5E%7B2%7D%7D%7B2%5Ccdot%20duration%7D"></div>
-<br/>
-
-- then for `x = duration/2`
-
-<!-- $$
-\Large
-midPos = \frac{duration \cdot targetspeed \cdot ( \pi^2 - 2 )}{8 \cdot \pi^2}
-$$ --> 
-
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AmidPos%20%3D%20%5Cfrac%7Bduration%20%5Ccdot%20targetspeed%20%5Ccdot%20(%20%5Cpi%5E2%20-%202%20)%7D%7B8%20%5Ccdot%20%5Cpi%5E2%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos%20%3D%20%5Cfrac%7Bduration%20%5Ccdot%20targetspeed%20%5Ccdot%20%5Cleft(cos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bduration%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Btargetspeed%20%5Ccdot%20x%5E2%7D%7B2*duration%7D"></div>
 <br/>
 
 - targetSpeed required from known distance to cover `pos` in given `duration` time
