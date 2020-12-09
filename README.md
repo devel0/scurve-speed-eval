@@ -39,24 +39,30 @@ $$ -->
 
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealAccel%20%3D%20%5Cfrac%7Btargetspeed%7D%7B%5Cint_0%5E%7Bduration%7D%20accelOverDuration%7D%5Ccdot%20accelOverDuration"></div> 
 
-<!-- $$
-\Large
-realAccel=\frac{targetspeed}{duration}\cdot \left(1-\cos\left(\frac{x}{duration}\cdot 2\cdot \pi\right)\right)
-$$ --> 
-
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealAccel%3D%5Cfrac%7Btargetspeed%7D%7Bduration%7D%5Ccdot%20%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)%5Cright)"></div>
-<br/>
-
-having accel a shape where the max accel is at x=duration/2 the above can simplified as
+- lets name
+    - **t** (targetSpeed)
+    - **x** (current time) 
+    - **d** (total duration)
+    - **p** (current pos)
 
 <!-- $$
 \Large
-maxRealAccel=\frac{targetspeed}{duration}\times2
+accel(x)=\frac{t}{d}\cdot \left(1-\cos\left(\frac{x}{d}\cdot 2\cdot \pi\right)\right)
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AmaxRealAccel%3D%5Cfrac%7Btargetspeed%7D%7Bduration%7D%5Ctimes2"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Aaccel(x)%3D%5Cfrac%7Bt%7D%7Bd%7D%5Ccdot%20%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bd%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)%5Cright)"></div>
+<br/>
+
+having accel a shape where the max accel is at x=d/2 the above can simplified as
+
+<!-- $$
+\Large
+accelMax=2 \cdot \frac{t}{d}
+$$ --> 
+
+<br/>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AaccelMax%3D2%20%5Ccdot%20%5Cfrac%7Bt%7D%7Bd%7D"></div>
 <br/>
 
 *example*: targetspeed=0.8r/s ; duration=0.5s ; maxRealAccel=3.2r/s2
@@ -65,33 +71,33 @@ $$ -->
 
 <!-- $$
 \Large
-realSpeed=\frac{\frac{-1}{2}\cdot \sin\left(\frac{2\cdot \pi\cdot x}{duration}\right)\cdot targetspeed}{\pi}+\frac{targetspeed\cdot x}{duration}
+speed(x)=\frac{\frac{-1}{2}\cdot \sin\left(\frac{2\cdot \pi\cdot x}{d}\right)\cdot t}{\pi}+\frac{t\cdot x}{d}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealSpeed%3D%5Cfrac%7B%5Cfrac%7B-1%7D%7B2%7D%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bduration%7D%5Cright)%5Ccdot%20targetspeed%7D%7B%5Cpi%7D%2B%5Cfrac%7Btargetspeed%5Ccdot%20x%7D%7Bduration%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Aspeed(x)%3D%5Cfrac%7B%5Cfrac%7B-1%7D%7B2%7D%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bd%7D%5Cright)%5Ccdot%20t%7D%7B%5Cpi%7D%2B%5Cfrac%7Bt%5Ccdot%20x%7D%7Bd%7D"></div>
 <br/>
 
 - position from time `x`
 
 <!-- $$
 \Large
-pos = \frac{duration \cdot targetspeed \cdot \left(cos\left(\frac{2 \cdot \pi \cdot x}{duration}\right)-1\right)}{4 \cdot \pi^2}+\frac{targetspeed \cdot x^2}{2*duration}
+pos(x) = \frac{d \cdot t \cdot \left(cos\left(\frac{2 \cdot \pi \cdot x}{d}\right)-1\right)}{4 \cdot \pi^2}+\frac{t \cdot x^2}{2*d}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos%20%3D%20%5Cfrac%7Bduration%20%5Ccdot%20targetspeed%20%5Ccdot%20%5Cleft(cos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bduration%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Btargetspeed%20%5Ccdot%20x%5E2%7D%7B2*duration%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos(x)%20%3D%20%5Cfrac%7Bd%20%5Ccdot%20t%20%5Ccdot%20%5Cleft(cos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bd%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Bt%20%5Ccdot%20x%5E2%7D%7B2*d%7D"></div>
 <br/>
 
 - targetSpeed required from known distance to cover `pos` in given `duration` time
 
 <!-- $$
 \Large
-targetspeed=\frac{2 \cdot pos}{duration}
+t=\frac{2 \cdot pos}{duration}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Atargetspeed%3D%5Cfrac%7B2%20%5Ccdot%20pos%7D%7Bduration%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0At%3D%5Cfrac%7B2%20%5Ccdot%20pos%7D%7Bduration%7D"></div>
 <br/>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48
