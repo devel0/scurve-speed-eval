@@ -37,7 +37,11 @@ $$ -->
 realAccel = \frac{targetspeed}{\int_0^{duration} accelOverDuration}\cdot accelOverDuration
 $$ --> 
 
+<br/>
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealAccel%20%3D%20%5Cfrac%7Btargetspeed%7D%7B%5Cint_0%5E%7Bduration%7D%20accelOverDuration%7D%5Ccdot%20accelOverDuration"></div> 
+<br/>
+
+<hr/>
 
 - lets name
     - **t** (targetSpeed)
