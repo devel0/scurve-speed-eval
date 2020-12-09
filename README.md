@@ -86,11 +86,11 @@ $$ -->
 
 <!-- $$
 \Large
-pos(x) = \frac{d \cdot t \cdot \left(cos\left(\frac{2 \cdot \pi \cdot x}{d}\right)-1\right)}{4 \cdot \pi^2}+\frac{t \cdot x^2}{2*d}
+pos(x) = \frac{d \cdot t \cdot \left(\cos\left(\frac{2 \cdot \pi \cdot x}{d}\right)-1\right)}{4 \cdot \pi^2}+\frac{t \cdot x^2}{2 \cdot d}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos(x)%20%3D%20%5Cfrac%7Bd%20%5Ccdot%20t%20%5Ccdot%20%5Cleft(cos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bd%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Bt%20%5Ccdot%20x%5E2%7D%7B2*d%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Apos(x)%20%3D%20%5Cfrac%7Bd%20%5Ccdot%20t%20%5Ccdot%20%5Cleft(%5Ccos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bd%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Bt%20%5Ccdot%20x%5E2%7D%7B2%20%5Ccdot%20d%7D"></div>
 <br/>
 
 - targetSpeed required from known distance to cover `pos` in given `duration` time
