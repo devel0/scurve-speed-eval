@@ -86,11 +86,12 @@ $$ -->
 - then for `x = duration/2`
 
 <!-- $$
+\Large
 midPos = \frac{duration \cdot targetspeed \cdot ( \pi^2 - 2 )}{8 \cdot \pi^2}
 $$ --> 
 
 <br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=midPos%20%3D%20%5Cfrac%7Bduration%20%5Ccdot%20targetspeed%20%5Ccdot%20(%20%5Cpi%5E2%20-%202%20)%7D%7B8%20%5Ccdot%20%5Cpi%5E2%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AmidPos%20%3D%20%5Cfrac%7Bduration%20%5Ccdot%20targetspeed%20%5Ccdot%20(%20%5Cpi%5E2%20-%202%20)%7D%7B8%20%5Ccdot%20%5Cpi%5E2%7D"></div>
 <br/>
 
 - targetSpeed required from known distance to cover `pos` in given `duration` time
