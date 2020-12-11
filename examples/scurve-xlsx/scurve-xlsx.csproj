@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>scurve_xlsx</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.3"/>
+    <PackageReference Include="UnitsNet" Version="4.77.0"/>
+  </ItemGroup>
+  <ItemGroup Condition="&apos;$(Configuration)&apos; == &apos;Debug&apos;">
+    <None Include="template.xlsx" CopyToOutputDirectory="PreserveNewest"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\netcore-util\netcore-util\netcore-util.csproj"/>
+    <ProjectReference Include="..\..\..\netcore-sci\netcore-sci\netcore-sci.csproj"/>
+  </ItemGroup>
+</Project>

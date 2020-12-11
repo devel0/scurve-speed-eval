@@ -10,7 +10,7 @@
     <!-- <PackageReference Include="AngouriMath" Version="1.2.0-preview.5" /> -->
     <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview6" />    
     <PackageReference Include="OxyPlot.Avalonia" Version="2.1.0-20200725.1" />
-    <PackageReference Include="UnitsNet" Version="4.76.0" />
+    <PackageReference Include="UnitsNet" Version="4.76.0" />    
   </ItemGroup>
 
   <ItemGroup>

@@ -4,113 +4,137 @@ Show how s-curve speed type can be obtained.
 
 <img src="data/img/demo.gif" width="700"/>
 
-references:
-- [How to get sinusoidal s-curve for a stepper motor](http://fightpc.blogspot.com/2018/04/how-to-get-sinusoidal-s-curve-for.html)
+---
+
+<!-- TOC -->
+- [scurve speed eval](#scurve-speed-eval)
+  * [Description](#description)
+  * [Example](#example)
+  * [Prerequisites](#prerequisites)
+  * [Quickstart](#quickstart)
+  * [How this project was built](#how-this-project-was-built)
+  * [References](#references)
+<!-- TOCEND -->
+
+---
 
 ## Description
 
-This app is not intended to produce scurve speed in realtime for constrained devices for those an approach is already explained in the article cited in references above, but wants to explain how much acceleration is required to reach a target speed in a given time using a s-curve speed profile.
+This app is not intended to produce scurve speed in realtime for constrained devices for those an approach is already explained in the article cited in references, but wants to explain formulas involved in computing accel, speed, pos for acceleration/deceleration phases for an s-curve shaped speed profile.
 
-I used the wonderful [AngouriMath](https://github.com/asc-community/AngouriMath) library to execute calculus in the code to demostrate the process described following, but final formula can be used of course.
+For symbolic calculus [AngouriMath](https://github.com/asc-community/AngouriMath) library was used.
 
-- from the fn [1-cos(x)][1] that will produce follow for x=0..2pi
+For preliminary analysis [sympy](https://github.com/sympy/sympy) with [this](data/test.py) test was used.
 
-![](data/img/scurve-base.png)
-
-where its integral ( the speed ) reach 2pi for x=2pi
-
-- [accelOverDuration][2] was computed to make the accel function applicable to the `[0..duration]` domain instead of the original `[0..2pi]`
-
-<!-- $$
-\Large
-accelOverDuration=1-\cos\left(\frac{x}{duration}\cdot 2\cdot \pi\right)
-$$ --> 
-
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AaccelOverDuration%3D1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bduration%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)"></div>
-<br/>
-
-- accelOverDuration integral produce a speed that we need to scale in order to fit with required targetspeed; [a factor][3] is computed to obtain *realAccel*:
-
-<!-- $$
-\Large
-realAccel = \frac{targetspeed}{\int_0^{duration} accelOverDuration}\cdot accelOverDuration
-$$ --> 
-
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0ArealAccel%20%3D%20%5Cfrac%7Btargetspeed%7D%7B%5Cint_0%5E%7Bduration%7D%20accelOverDuration%7D%5Ccdot%20accelOverDuration"></div> 
-<br/>
-
-<hr/>
+![](data/img/scurve-accel-decel.png)
 
 - lets name
-    - **t** (targetSpeed)
-    - **x** (current time) 
-    - **d** (total duration)
-    - **p** (current pos)
+    - **t** (time)
+    - **x** (distance) 
+    - **d** (total duration accel/decel)
+    - **s** (final speed)
+
+- suppose `[0,d/2]` the time for acceleration while `[d/2,d]` the time for deceleration to produce a target final speed `s` starting from speed=0 and pos=0
+- from base acceleration function [1-cos(t)][1]
+- expanding the period domain from `[0,2pi]` to `[0,d/2]` through [this][2] subst
+- [stretching][3] the accel function so that its integral, the speed, achieve targetspeed
+- acceleration results as [this][4]
 
 <!-- $$
-\Large
-accel(x)=\frac{t}{d}\cdot \left(1-\cos\left(\frac{x}{d}\cdot 2\cdot \pi\right)\right)
+\large
+accel(t)=\frac{2\cdot s}{d}\cdot\left(1-\cos\left(\frac{4\cdot\pi\cdot t}{d}\right)\right)
 $$ --> 
 
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Aaccel(x)%3D%5Cfrac%7Bt%7D%7Bd%7D%5Ccdot%20%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7Bx%7D%7Bd%7D%5Ccdot%202%5Ccdot%20%5Cpi%5Cright)%5Cright)"></div>
-<br/>
+<div align="center"><img src="svg/Et2MoEATqe.svg"/></div>
 
-having accel a shape where the max accel is at x=d/2 the above can simplified as
+- because accel max value is at midpoint ( t=1/4d because accel extends from `[0,d/2]` ) the above can be simplified into
 
 <!-- $$
-\Large
-accelMax=2 \cdot \frac{t}{d}
+\large
+maxAccel=\frac{4\cdot s}{d}
 $$ --> 
 
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0AaccelMax%3D2%20%5Ccdot%20%5Cfrac%7Bt%7D%7Bd%7D"></div>
-<br/>
+<div align="center"><img src="svg/LkHg3vtfXU.svg"/></div>
 
-*example*: targetspeed=0.8r/s ; duration=0.5s ; maxRealAccel=3.2r/s2
-
-- The *realSpeed* results as the [integral of realAccel][4]:
+- [integration of accel][5] gives speed
 
 <!-- $$
-\Large
-speed(x)=\frac{t\cdot x}{d}-\frac{\sin\left(\frac{2\cdot \pi\cdot x}{d}\right)\cdot t}{2\cdot\pi}
+\large
+speed(t) = \frac{2\cdot s}{d} \cdot \left( t - \frac{d\cdot \sin\left(\frac{4\cdot\pi\cdot t}{d}\right)}{4\cdot\pi} \right)
 $$ --> 
 
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Aspeed(x)%3D%5Cfrac%7Bt%5Ccdot%20x%7D%7Bd%7D-%5Cfrac%7B%5Csin%5Cleft(%5Cfrac%7B2%5Ccdot%20%5Cpi%5Ccdot%20x%7D%7Bd%7D%5Cright)%5Ccdot%20t%7D%7B2%5Ccdot%5Cpi%7D"></div>
-<br/>
+<div align="center"><img src="svg/WiLkvTbME9.svg"/></div>
 
-- position from time `x`
+- [integration of speed][6] gives pos ( normalized removing integration constant computed for t=0 )
 
 <!-- $$
-\Large
-p(x) = \frac{d \cdot t \cdot \left(\cos\left(\frac{2 \cdot \pi \cdot x}{d}\right)-1\right)}{4 \cdot \pi^2}+\frac{t \cdot x^2}{2 \cdot d}
+\large
+pos(t) = \frac{s\cdot d \cdot \left( \cos\left(\frac{4\cdot\pi\cdot t}{d}\right)-1 \right)}{8\cdot\pi^2} + \frac{s\cdot t^2}{d}
 $$ --> 
 
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0Ap(x)%20%3D%20%5Cfrac%7Bd%20%5Ccdot%20t%20%5Ccdot%20%5Cleft(%5Ccos%5Cleft(%5Cfrac%7B2%20%5Ccdot%20%5Cpi%20%5Ccdot%20x%7D%7Bd%7D%5Cright)-1%5Cright)%7D%7B4%20%5Ccdot%20%5Cpi%5E2%7D%2B%5Cfrac%7Bt%20%5Ccdot%20x%5E2%7D%7B2%20%5Ccdot%20d%7D"></div>
-<br/>
+<div align="center"><img src="svg/vxSSM3Bcji.svg"/></div>
 
-- targetSpeed required from known distance to cover `pos` in given `duration` time
+- [targetspeed][7] required from known final position `p` to reach in required time duration `d`
 
 <!-- $$
-\Large
-t=\frac{2 \cdot p}{d}
+\large
+s = \frac{2\cdot p}{d}
 $$ --> 
 
-<br/>
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5CLarge%0At%3D%5Cfrac%7B2%20%5Ccdot%20p%7D%7Bd%7D"></div>
-<br/>
+<div align="center"><img src="svg/HNf337ATs4.svg"/></div>
 
-[1]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L48
+- from base deceleration function [cos(t)-1][8]
 
-[2]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L51
+- deceleration results as [this][9]
 
-[3]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L54
+<!-- $$
+\large
+deAccel\left(t+\frac{d}{2}\right) = \frac{2\cdot s}{d}\cdot\left(\cos\left(\frac{4\cdot\pi\cdot t}{d}\right)-1\right)
+$$ --> 
 
-[4]: https://github.com/devel0/scurve-speed-eval/blob/0bff63605a3f7fae49d6f56aab4b813efa755242/Program.cs#L57
+<div align="center"><img src="svg/gyr9yVx6LZ.svg"/></div>
+
+- despeed results as [this][10] ( given from deAccel integral subtracting integration constant and adding speed achieved by accel at `d/2` )
+
+<!-- $$
+\large
+deSpeed\left(t+\frac{d}{2}\right) = \frac{2\cdot s\cdot\sin\left(\frac{4\cdot\pi\cdot t}{d} \right)}{4\cdot\pi}-\frac{2\cdot s\cdot t}{d}+s
+$$ --> 
+
+<div align="center"><img src="svg/8clgcYTOa5.svg"/></div>
+
+- depos results as [this][11] ( given from deSpeed integral subtracting integration constant and adding pos achivede by accel at `d/2` )
+
+<!-- $$
+\large
+dePos\left(t+\frac{d}{2}\right) = \frac{s\cdot d\cdot\left( 1-\cos\left(\frac{4\cdot\pi\cdot t}{d}\right) \right)}{8\cdot\pi^2}-\frac{s\cdot t^2}{d}+s\cdot t+\frac{s\cdot d}{4}
+$$ --> 
+
+<div align="center"><img src="svg/qrYmCBoiyb.svg"/></div>
+
+[1]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L48
+[2]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L49
+[3]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L50
+[4]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L51
+[5]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L53
+[6]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L57
+[7]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L60
+[8]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L62
+[9]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L65
+[10]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L69
+[11]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L72
+
+## Example
+
+![](data/img/example.png)
+
+This [example](examples/scurve-xlsx/Program.cs) can be executed through
+
+```
+dotnet run --project examples/scurve-xlsx
+```
+
+and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by applying above formulas and doing some test calc about max allowable torque based on motion and supposed load.
 
 ## Prerequisites
 
@@ -143,3 +167,7 @@ dotnet add package OxyPlot.Avalonia --version 2.1.0-20200725.1
 dotnet add package UnitsNet --version 4.76.0
 dotnet run
 ```
+
+## References
+
+- [How to get sinusoidal s-curve for a stepper motor](http://fightpc.blogspot.com/2018/04/how-to-get-sinusoidal-s-curve-for.html)
