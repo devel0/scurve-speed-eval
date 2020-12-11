@@ -57,8 +57,8 @@ namespace scurve_speed_eval
             var pos = $"({speedInt})-{(posAtZero)}";
             var posAtHalf = pos.Substitute("t", "(d/2)");
 
-            var targetspeed = $"{pos.ToString()}=x".Substitute("t", "d").Solve("s");
-
+            var targetspeed = $"{pos.ToString()}=x".Substitute("t", "d/2").Solve("s"); 
+            
             var deAccelBase = "cos(t)-1";
             var deAccelOverDuration = deAccelBase.Substitute("t", $"(t/(d/2)*2*pi)");
             var deAccelCoeff = $"s / abs({deAccelOverDuration.Integrate("t").Substitute("t", "(d/2)")})";
