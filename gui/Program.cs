@@ -45,30 +45,30 @@ namespace scurve_speed_eval
 
             var sb = new StringBuilder();
 
-            var accelBase = "1-cos(x)";
-            var accelOverDuration = accelBase.Substitute("x", $"(x/(duration/2)*2*pi)");
-            var accelCoeff = $"targetspeed / abs({accelOverDuration.Integrate("x").Substitute("x", "(duration/2)")})";
+            var accelBase = "1-cos(t)";
+            var accelOverDuration = accelBase.Substitute("t", $"(t/(d/2)*2*pi)");
+            var accelCoeff = $"s / abs({accelOverDuration.Integrate("t").Substitute("t", "(d/2)")})";
             var accel = $"({accelCoeff}) * ({accelOverDuration})";
-            var accelInt = accel.Integrate("x");
+            var accelInt = accel.Integrate("t");
             var speed = accelInt;
-            var speedAtHalf = accelInt.Substitute("x", "(duration/2)");
-            var speedInt = speed.Integrate("x");
-            var posAtZero = speedInt.Substitute("x", 0);
+            var speedAtHalf = accelInt.Substitute("t", "(d/2)");
+            var speedInt = speed.Integrate("t");
+            var posAtZero = speedInt.Substitute("t", 0);
             var pos = $"({speedInt})-{(posAtZero)}";
-            var posAtHalf = pos.Substitute("x", "(duration/2)");
+            var posAtHalf = pos.Substitute("t", "(d/2)");
 
-            var targetspeed = $"{pos.ToString()}=pos".Substitute("x", "duration").Solve("targetspeed");
+            var targetspeed = $"{pos.ToString()}=x".Substitute("t", "d").Solve("s");
 
-            var deAccelBase = "cos(x)-1";
-            var deAccelOverDuration = deAccelBase.Substitute("x", $"(x/(duration/2)*2*pi)");
-            var deAccelCoeff = $"targetspeed / abs({deAccelOverDuration.Integrate("x").Substitute("x", "(duration/2)")})";
+            var deAccelBase = "cos(t)-1";
+            var deAccelOverDuration = deAccelBase.Substitute("t", $"(t/(d/2)*2*pi)");
+            var deAccelCoeff = $"s / abs({deAccelOverDuration.Integrate("t").Substitute("t", "(d/2)")})";
             var deAccel = $"({deAccelCoeff})*({deAccelOverDuration})";
-            var deAccelInt = deAccel.Integrate("x");
-            var deSpeedAtZero = deAccelInt.Substitute("x", 0);
-            var deSpeedAtHalf = deAccelInt.Substitute("x", "(duration/2)");
+            var deAccelInt = deAccel.Integrate("t");
+            var deSpeedAtZero = deAccelInt.Substitute("t", 0);
+            var deSpeedAtHalf = deAccelInt.Substitute("t", "(d/2)");
             var deSpeed = $"({deAccelInt})-({deSpeedAtZero})+({speedAtHalf})";
-            var deSpeedInt = deSpeed.Integrate("x");
-            var dePosAtZero = deSpeedInt.Substitute("x", 0);
+            var deSpeedInt = deSpeed.Integrate("t");
+            var dePosAtZero = deSpeedInt.Substitute("t", 0);
             var dePos = $"({deSpeedInt})-({dePosAtZero})+({posAtHalf})";
 
             var t = Duration.FromSeconds(0);
@@ -83,34 +83,34 @@ namespace scurve_speed_eval
             var dePosDataSet = new List<PlotData>();
 
             var accelCompiled = accel
-                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
-                .Substitute("duration", m.Duration.Seconds)
-                .Compile("x");
+                .Substitute("s", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("d", m.Duration.Seconds)
+                .Compile("t");
 
             var deAccelCompiled = deAccel
-                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
-                .Substitute("duration", m.Duration.Seconds)
-                .Compile("x");
+                .Substitute("s", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("d", m.Duration.Seconds)
+                .Compile("t");
 
             var speedCompiled = speed
-                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
-                .Substitute("duration", m.Duration.Seconds)
-                .Compile("x");
+                .Substitute("s", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("d", m.Duration.Seconds)
+                .Compile("t");
 
             var deSpeedCompiled = deSpeed
-                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
-                .Substitute("duration", m.Duration.Seconds)
-                .Compile("x");
+                .Substitute("s", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("d", m.Duration.Seconds)
+                .Compile("t");
 
             var posCompiled = pos
-                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
-                .Substitute("duration", m.Duration.Seconds)
-                .Compile("x");
+                .Substitute("s", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("d", m.Duration.Seconds)
+                .Compile("t");
 
             var dePosCompiled = dePos
-                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
-                .Substitute("duration", m.Duration.Seconds)
-                .Compile("x");
+                .Substitute("s", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("d", m.Duration.Seconds)
+                .Compile("t");
 
             var halfDuration = m.Duration / 2;
 
