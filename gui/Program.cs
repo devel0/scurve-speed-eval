@@ -28,7 +28,7 @@ namespace scurve_speed_eval
 
     public class Model
     {
-        public Duration Duration { get; set; } = Duration.FromSeconds(0.1);
+        public Duration Duration { get; set; } = Duration.FromSeconds(5);
         public RotationalSpeed TargetSpeed { get; set; } = RotationalSpeed.FromRevolutionsPerSecond(0.8);
         public int RenderPts { get; set; } = 100;
     }
@@ -45,51 +45,108 @@ namespace scurve_speed_eval
 
             var sb = new StringBuilder();
 
-            var accelFn = "1-cos(x)";
-            sb.AppendLine($"accelFn ---> {accelFn}");
+            var accelBase = "1-cos(x)";
+            var accelOverDuration = accelBase.Substitute("x", $"(x/(duration/2)*2*pi)");
+            var accelCoeff = $"targetspeed / abs({accelOverDuration.Integrate("x").Substitute("x", "(duration/2)")})";
+            var accel = $"({accelCoeff}) * ({accelOverDuration})";
+            var accelInt = accel.Integrate("x");
+            var speed = accelInt;
+            var speedAtHalf = accelInt.Substitute("x", "(duration/2)");
+            var speedInt = speed.Integrate("x");
+            var posAtZero = speedInt.Substitute("x", 0);
+            var pos = $"({speedInt})-{(posAtZero)}";
+            var posAtHalf = pos.Substitute("x", "(duration/2)");
 
-            var accelOverDuration = accelFn.Substitute("x", $"x/duration*2*pi").Simplify();
-            sb.AppendLine($"accelOverDuration ---> {accelOverDuration}");
+            var targetspeed = $"{pos.ToString()}=pos".Substitute("x", "duration").Solve("targetspeed");
 
-            var realAccel = $"targetspeed / ({accelOverDuration.Integrate("x").Substitute("x", "duration").Simplify()}) * ({accelOverDuration})".Simplify();
-            sb.AppendLine($"realAccel ---> {realAccel}");
-
-            var realSpeed = realAccel.Integrate("x").Simplify();
-            sb.AppendLine($"realSpeed ---> {realSpeed}");
-
-            var pos = realSpeed.Integrate("x").Simplify();
-            sb.AppendLine($"pos ---> {pos}");
-
-            var pos0 = pos.Substitute("x", 0).Simplify();            
-
-            var targetspeed = $"{pos.ToString()}-{pos0.ToString()}=pos".Substitute("x", "duration").Simplify().Solve("targetspeed");
-            sb.AppendLine($"targetspeed -> {targetspeed}");            
+            var deAccelBase = "cos(x)-1";
+            var deAccelOverDuration = deAccelBase.Substitute("x", $"(x/(duration/2)*2*pi)");
+            var deAccelCoeff = $"targetspeed / abs({deAccelOverDuration.Integrate("x").Substitute("x", "(duration/2)")})";
+            var deAccel = $"({deAccelCoeff})*({deAccelOverDuration})";
+            var deAccelInt = deAccel.Integrate("x");
+            var deSpeedAtZero = deAccelInt.Substitute("x", 0);
+            var deSpeedAtHalf = deAccelInt.Substitute("x", "(duration/2)");
+            var deSpeed = $"({deAccelInt})-({deSpeedAtZero})+({speedAtHalf})";
+            var deSpeedInt = deSpeed.Integrate("x");
+            var dePosAtZero = deSpeedInt.Substitute("x", 0);
+            var dePos = $"({deSpeedInt})-({dePosAtZero})+({posAtHalf})";
 
             var t = Duration.FromSeconds(0);
             var t_step = m.Duration / m.RenderPts;
 
             var accelDataSet = new List<PlotData>();
             var speedDataSet = new List<PlotData>();
+            var posDataSet = new List<PlotData>();
 
-            var accelExpandFnCompiled = realAccel
-                .Substitute("duration", m.Duration.Seconds)
+            var deAccelDataSet = new List<PlotData>();
+            var deSpeedDataSet = new List<PlotData>();
+            var dePosDataSet = new List<PlotData>();
+
+            var accelCompiled = accel
                 .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("duration", m.Duration.Seconds)
                 .Compile("x");
 
-            var speedExpandFnCompiled = realSpeed
+            var deAccelCompiled = deAccel
                 .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
                 .Substitute("duration", m.Duration.Seconds)
                 .Compile("x");
 
-            while (t < m.Duration)
+            var speedCompiled = speed
+                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("duration", m.Duration.Seconds)
+                .Compile("x");
+
+            var deSpeedCompiled = deSpeed
+                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("duration", m.Duration.Seconds)
+                .Compile("x");
+
+            var posCompiled = pos
+                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("duration", m.Duration.Seconds)
+                .Compile("x");
+
+            var dePosCompiled = dePos
+                .Substitute("targetspeed", m.TargetSpeed.RevolutionsPerSecond)
+                .Substitute("duration", m.Duration.Seconds)
+                .Compile("x");
+
+            var halfDuration = m.Duration / 2;
+
+            var timeTol = Duration.FromNanoseconds(1);
+
+            while (t.LessThanOrEqualsTol(timeTol, m.Duration))
             {
-                accelDataSet.Add(new PlotData(
-                    t.Seconds,
-                    double.Parse(accelExpandFnCompiled.Substitute(t.Seconds).Real.ToString())));
+                if (t.LessThanOrEqualsTol(timeTol, halfDuration))
+                {
+                    accelDataSet.Add(new PlotData(
+                        t.Seconds,
+                        double.Parse(accelCompiled.Substitute(t.Seconds).Real.ToString())));
 
-                speedDataSet.Add(new PlotData(
-                    t.Seconds,
-                    double.Parse(speedExpandFnCompiled.Substitute(t.Seconds).Real.ToString())));
+                    speedDataSet.Add(new PlotData(
+                        t.Seconds,
+                        double.Parse(speedCompiled.Substitute(t.Seconds).Real.ToString())));
+
+                    posDataSet.Add(new PlotData(
+                        t.Seconds,
+                        double.Parse(posCompiled.Substitute(t.Seconds).Real.ToString())));
+                }
+
+                if (t.GreatThanOrEqualsTol(timeTol, halfDuration))
+                {
+                    deAccelDataSet.Add(new PlotData(
+                        t.Seconds,
+                        double.Parse(deAccelCompiled.Substitute((t - halfDuration).Seconds).Real.ToString())));
+
+                    deSpeedDataSet.Add(new PlotData(
+                        t.Seconds,
+                        double.Parse(deSpeedCompiled.Substitute((t - halfDuration).Seconds).Real.ToString())));
+
+                    dePosDataSet.Add(new PlotData(
+                        t.Seconds,
+                        double.Parse(dePosCompiled.Substitute((t - halfDuration).Seconds).Real.ToString())));
+                }
 
                 t += t_step;
             }
@@ -99,18 +156,69 @@ namespace scurve_speed_eval
                 Title = "Accel (rps2)",
                 DataFieldX = "x",
                 DataFieldY = "y",
-                ItemsSource = accelDataSet
+                ItemsSource = accelDataSet,
+                Color = OxyColor.Parse("#9ccc65")
             };
             pv.Model.Series.Add(accelSerie);
+
+            var deAccelSerie = new OxyPlot.Series.LineSeries()
+            {
+                Title = "DeAccel (rps2)",
+                DataFieldX = "x",
+                DataFieldY = "y",
+                ItemsSource = deAccelDataSet,
+                Color = OxyColor.Parse("#6b9b37")
+            };
+            pv.Model.Series.Add(deAccelSerie);
 
             var speedSerie = new OxyPlot.Series.LineSeries()
             {
                 Title = "Speed (rps)",
                 DataFieldX = "x",
                 DataFieldY = "y",
-                ItemsSource = speedDataSet
+                ItemsSource = speedDataSet,
+                Color = OxyColor.Parse("#42a5f5")
             };
             pv.Model.Series.Add(speedSerie);
+
+            var deSpeedSerie = new OxyPlot.Series.LineSeries()
+            {
+                Title = "DeSpeed (rps)",
+                DataFieldX = "x",
+                DataFieldY = "y",
+                ItemsSource = deSpeedDataSet,
+                Color = OxyColor.Parse("#0077c2")
+            };
+            pv.Model.Series.Add(deSpeedSerie);
+
+            var posSerie = new OxyPlot.Series.LineSeries()
+            {
+                Title = "Pos (rev)",
+                DataFieldX = "x",
+                DataFieldY = "y",
+                ItemsSource = posDataSet,
+                Color = OxyColor.Parse("#ef5350")
+            };
+            pv.Model.Series.Add(posSerie);
+
+            var dePosSerie = new OxyPlot.Series.LineSeries()
+            {
+                Title = "DePos (rev)",
+                DataFieldX = "x",
+                DataFieldY = "y",
+                ItemsSource = dePosDataSet,
+                Color = OxyColor.Parse("#b61827")
+            };
+            pv.Model.Series.Add(dePosSerie);
+
+            pv.Model.Annotations.Clear();
+            var note = new OxyPlot.Annotations.ArrowAnnotation
+            {
+                StartPoint = new DataPoint(m.Duration.Seconds / 2, m.TargetSpeed.RevolutionsPerSecond * 1.3),
+                EndPoint = new DataPoint(m.Duration.Seconds / 2, m.TargetSpeed.RevolutionsPerSecond),
+                Text = "targetspeed"
+            };
+            pv.Model.Annotations.Add(note);
 
             pv.ResetAllAxes();
             foreach (var x in pv.Model.Axes)
@@ -183,7 +291,8 @@ namespace scurve_speed_eval
                         Minimum = 0.5,
                         Maximum = 10,
                         LargeChange = 0.5,
-                        SmallChange = 0.5
+                        SmallChange = 0.5,
+                        Value = m.Duration.Seconds
                     };
                     sld.PropertyChanged += (a, b) =>
                     {
@@ -228,8 +337,7 @@ namespace scurve_speed_eval
             }
 
             {
-                //p.Height = 150;                
-
+                Recompute();
                 pv.ResetAllAxes();
                 pv.InvalidatePlot();
             }
@@ -244,21 +352,12 @@ namespace scurve_speed_eval
             pv.InvalidatePlot();
         }
 
-        public override void Render(DrawingContext context)
-        {
-            base.Render(context);
-
-            //p.Render(context);
-        }
-
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("t-sin(t)".Differentiate("t").Latexise());
-
             GuiToolkit.CreateGui<MainWindow>();
         }
     }
