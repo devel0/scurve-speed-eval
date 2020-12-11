@@ -47,7 +47,7 @@ $$ -->
 
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0Aaccel(t)%3D%5Cfrac%7B2%5Ccdot%20s%7D%7Bd%7D%5Ccdot%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%5Cright)%5Cright)"></div>
 
-- because accel max value is at midpoint ( t=1/4d because accel extends from `[0,d/2]` ) the above can be simplified into
+- positive max accel value is at midpoint ( t=1/4d because accel positive in `[0,d/2]` ) thus above can be simplified into
 
 <!-- $$
 \large
