@@ -103,7 +103,7 @@ $$ -->
 
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0AdeSpeed%5Cleft(t%2B%5Cfrac%7Bd%7D%7B2%7D%5Cright)%20%3D%20%5Cfrac%7B2%5Ccdot%20s%5Ccdot%5Csin%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%20%5Cright)%7D%7B4%5Ccdot%5Cpi%7D-%5Cfrac%7B2%5Ccdot%20s%5Ccdot%20t%7D%7Bd%7D%2Bs"></div>
 
-- depos results as [this][11] ( given from deSpeed integral subtracting integration constant and adding pos achivede by accel at `d/2` )
+- depos results as [this][11] ( given from deSpeed integral subtracting integration constant and adding pos achieved by accel at `d/2` )
 
 <!-- $$
 \large
