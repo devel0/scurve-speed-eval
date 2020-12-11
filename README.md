@@ -45,7 +45,7 @@ For preliminary analysis [sympy](https://github.com/sympy/sympy) with [this](dat
 accel(t)=\frac{2\cdot s}{d}\cdot\left(1-\cos\left(\frac{4\cdot\pi\cdot t}{d}\right)\right)
 $$ --> 
 
-<div align="center"><img src="svg/Et2MoEATqe.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0Aaccel(t)%3D%5Cfrac%7B2%5Ccdot%20s%7D%7Bd%7D%5Ccdot%5Cleft(1-%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%5Cright)%5Cright)"></div>
 
 - because accel max value is at midpoint ( t=1/4d because accel extends from `[0,d/2]` ) the above can be simplified into
 
@@ -54,7 +54,7 @@ $$ -->
 maxAccel=\frac{4\cdot s}{d}
 $$ --> 
 
-<div align="center"><img src="svg/LkHg3vtfXU.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0AmaxAccel%3D%5Cfrac%7B4%5Ccdot%20s%7D%7Bd%7D"></div>
 
 - [integration of accel][5] gives speed
 
@@ -63,7 +63,7 @@ $$ -->
 speed(t) = \frac{2\cdot s}{d} \cdot \left( t - \frac{d\cdot \sin\left(\frac{4\cdot\pi\cdot t}{d}\right)}{4\cdot\pi} \right)
 $$ --> 
 
-<div align="center"><img src="svg/WiLkvTbME9.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0Aspeed(t)%20%3D%20%5Cfrac%7B2%5Ccdot%20s%7D%7Bd%7D%20%5Ccdot%20%5Cleft(%20t%20-%20%5Cfrac%7Bd%5Ccdot%20%5Csin%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%5Cright)%7D%7B4%5Ccdot%5Cpi%7D%20%5Cright)"></div>
 
 - [integration of speed][6] gives pos ( normalized removing integration constant computed for t=0 )
 
@@ -72,7 +72,7 @@ $$ -->
 pos(t) = \frac{s\cdot d \cdot \left( \cos\left(\frac{4\cdot\pi\cdot t}{d}\right)-1 \right)}{8\cdot\pi^2} + \frac{s\cdot t^2}{d}
 $$ --> 
 
-<div align="center"><img src="svg/vxSSM3Bcji.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0Apos(t)%20%3D%20%5Cfrac%7Bs%5Ccdot%20d%20%5Ccdot%20%5Cleft(%20%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%5Cright)-1%20%5Cright)%7D%7B8%5Ccdot%5Cpi%5E2%7D%20%2B%20%5Cfrac%7Bs%5Ccdot%20t%5E2%7D%7Bd%7D"></div>
 
 - [targetspeed][7] required from known final position `p` to reach in required time duration `d`
 
@@ -81,7 +81,7 @@ $$ -->
 s = \frac{2\cdot p}{d}
 $$ --> 
 
-<div align="center"><img src="svg/HNf337ATs4.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0As%20%3D%20%5Cfrac%7B2%5Ccdot%20p%7D%7Bd%7D"></div>
 
 - from base deceleration function [cos(t)-1][8]
 
@@ -92,7 +92,7 @@ $$ -->
 deAccel\left(t+\frac{d}{2}\right) = \frac{2\cdot s}{d}\cdot\left(\cos\left(\frac{4\cdot\pi\cdot t}{d}\right)-1\right)
 $$ --> 
 
-<div align="center"><img src="svg/gyr9yVx6LZ.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0AdeAccel%5Cleft(t%2B%5Cfrac%7Bd%7D%7B2%7D%5Cright)%20%3D%20%5Cfrac%7B2%5Ccdot%20s%7D%7Bd%7D%5Ccdot%5Cleft(%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%5Cright)-1%5Cright)"></div>
 
 - despeed results as [this][10] ( given from deAccel integral subtracting integration constant and adding speed achieved by accel at `d/2` )
 
@@ -101,7 +101,7 @@ $$ -->
 deSpeed\left(t+\frac{d}{2}\right) = \frac{2\cdot s\cdot\sin\left(\frac{4\cdot\pi\cdot t}{d} \right)}{4\cdot\pi}-\frac{2\cdot s\cdot t}{d}+s
 $$ --> 
 
-<div align="center"><img src="svg/8clgcYTOa5.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0AdeSpeed%5Cleft(t%2B%5Cfrac%7Bd%7D%7B2%7D%5Cright)%20%3D%20%5Cfrac%7B2%5Ccdot%20s%5Ccdot%5Csin%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%20%5Cright)%7D%7B4%5Ccdot%5Cpi%7D-%5Cfrac%7B2%5Ccdot%20s%5Ccdot%20t%7D%7Bd%7D%2Bs"></div>
 
 - depos results as [this][11] ( given from deSpeed integral subtracting integration constant and adding pos achivede by accel at `d/2` )
 
@@ -110,7 +110,7 @@ $$ -->
 dePos\left(t+\frac{d}{2}\right) = \frac{s\cdot d\cdot\left( 1-\cos\left(\frac{4\cdot\pi\cdot t}{d}\right) \right)}{8\cdot\pi^2}-\frac{s\cdot t^2}{d}+s\cdot t+\frac{s\cdot d}{4}
 $$ --> 
 
-<div align="center"><img src="svg/qrYmCBoiyb.svg"/></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0AdePos%5Cleft(t%2B%5Cfrac%7Bd%7D%7B2%7D%5Cright)%20%3D%20%5Cfrac%7Bs%5Ccdot%20d%5Ccdot%5Cleft(%201-%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20t%7D%7Bd%7D%5Cright)%20%5Cright)%7D%7B8%5Ccdot%5Cpi%5E2%7D-%5Cfrac%7Bs%5Ccdot%20t%5E2%7D%7Bd%7D%2Bs%5Ccdot%20t%2B%5Cfrac%7Bs%5Ccdot%20d%7D%7B4%7D"></div>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L48
 [2]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L49
