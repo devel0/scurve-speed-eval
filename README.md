@@ -115,10 +115,11 @@ $$ -->
 - depos results as [this][11] ( given from deSpeed integral subtracting integration constant and adding pos achieved by accel at `d/2` )
 
 <!-- $$
+\large
 dePos\left(th\right) = \frac{s\cdot d\cdot\left( 1-\cos\left(\frac{4\cdot\pi\cdot th}{d}\right) \right)}{8\cdot\pi^2}-\frac{s\cdot th^2}{d}+s\cdot th+\frac{s\cdot d}{4}
 $$ --> 
 
-<div align="center"><img src="https://render.githubusercontent.com/render/math?math=dePos%5Cleft(th%5Cright)%20%3D%20%5Cfrac%7Bs%5Ccdot%20d%5Ccdot%5Cleft(%201-%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20th%7D%7Bd%7D%5Cright)%20%5Cright)%7D%7B8%5Ccdot%5Cpi%5E2%7D-%5Cfrac%7Bs%5Ccdot%20th%5E2%7D%7Bd%7D%2Bs%5Ccdot%20th%2B%5Cfrac%7Bs%5Ccdot%20d%7D%7B4%7D"></div>
+<div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0AdePos%5Cleft(th%5Cright)%20%3D%20%5Cfrac%7Bs%5Ccdot%20d%5Ccdot%5Cleft(%201-%5Ccos%5Cleft(%5Cfrac%7B4%5Ccdot%5Cpi%5Ccdot%20th%7D%7Bd%7D%5Cright)%20%5Cright)%7D%7B8%5Ccdot%5Cpi%5E2%7D-%5Cfrac%7Bs%5Ccdot%20th%5E2%7D%7Bd%7D%2Bs%5Ccdot%20th%2B%5Cfrac%7Bs%5Ccdot%20d%7D%7B4%7D"></div>
 
 [1]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L48
 [2]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L49
