@@ -19,6 +19,12 @@
 
 Library to control stepper motor [scurve impulse](https://github.com/devel0/scurve-speed-eval) type motion for ststm32 platform, mbed os framework.
 
+Keynotes:
+- a [move](https://github.com/devel0/scurve-speed-eval/blob/7be5916fd4e6440ba6acc80f9a8664b1fb84717d/scurve-impulse-stepper%2Fsrc%2Fscurve-impulse-stepper.cpp#L25) method allow to setup motion
+- a [control](https://github.com/devel0/scurve-speed-eval/blob/7be5916fd4e6440ba6acc80f9a8664b1fb84717d/scurve-impulse-stepper%2Fsrc%2Fscurve-impulse-stepper.cpp#L57) method is required to be called in a loop
+- a [pulse_down](https://github.com/devel0/scurve-speed-eval/blob/7be5916fd4e6440ba6acc80f9a8664b1fb84717d/scurve-impulse-stepper%2Fsrc%2Fscurve-impulse-stepper.cpp#L120) timeout provides bring signal level to 0 after pulse_width expired
+- a [common timer](https://github.com/devel0/scurve-speed-eval/blob/7be5916fd4e6440ba6acc80f9a8664b1fb84717d/scurve-impulse-stepper%2Fexamples%2Fexample01.cpp#L30) is used to drive N motors
+
 ## Quickstart
 
 Install using vscode command palette `PlatformIO: New Terminal` referring to [platformio registry](https://platformio.org/lib/show/11589/scurve-impulse-stepper) cli mode doc.

@@ -10,6 +10,7 @@ Show how s-curve speed type can be obtained.
 - [scurve speed eval](#scurve-speed-eval)
   * [Description](#description)
   * [Example](#example)
+  * [Implementation](#implementation)
   * [Prerequisites](#prerequisites)
   * [Quickstart](#quickstart)
   * [How this project was built](#how-this-project-was-built)
@@ -19,8 +20,6 @@ Show how s-curve speed type can be obtained.
 ---
 
 ## Description
-
-The [scurve-stepper library](scurve-impulse-stepper/README.md) to control stepper motor scurve motion type is provided.
 
 For symbolic calculus [AngouriMath](https://github.com/asc-community/AngouriMath) library was used.
 
@@ -144,6 +143,10 @@ dotnet run --project examples/scurve-xlsx
 ```
 
 and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by applying above formulas and doing some test calc about max allowable torque based on motion and supposed load.
+
+## Implementation
+
+A [library](scurve-impulse-stepper/README.md) to drive scurve impulse stepper motors is provided for mbed stm32.
 
 ## Prerequisites
 
