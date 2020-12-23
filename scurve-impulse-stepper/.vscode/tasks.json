@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "PlatformIO",
+			"task": "Pre-Debug (nucleo_f767zi)",
+			"problemMatcher": [
+				"$platformio"
+			],
+			"label": "PlatformIO: Build in debug mode (nucleo_f767zi)"
+		}
+	]
+}

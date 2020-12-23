@@ -1,0 +1,44 @@
+{
+    "name": "scurve-impulse-stepper",
+    "version": "0.1.0",
+    "description": "S-Curve impulse stepper motor functions for ststm32 platform, mbed os framework.",
+    "keywords": "stepper-motor,scurve,mbed,ststm32",
+    "authors": {
+        "name": "Lorenzo Delana",
+        "email": "lorenzo.delana@gmail.com"
+    },
+    "license": "MIT",
+    "frameworks": [
+        "ststm32"
+    ],
+    "platforms": [
+        "mbed"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/devel0/scurve-speed-eval.git"
+    },
+    "examples": [
+        {
+            "name": "example01",
+            "base": "examples",
+            "files": [
+                "example01.cpp"
+            ]
+        },
+        {
+            "name": "example02",
+            "base": "examples",
+            "files": [
+                "example02.cpp"
+            ]
+        }
+    ],
+    "export": {
+        "exclude": [
+            "src/debug-main.cpp",
+            "data/img/*",
+            "library.json"
+        ]
+    }
+}

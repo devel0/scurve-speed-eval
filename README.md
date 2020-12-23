@@ -20,7 +20,7 @@ Show how s-curve speed type can be obtained.
 
 ## Description
 
-This app is not intended to produce scurve speed in realtime for constrained devices for those an approach is already explained in the article cited in references, but wants to explain formulas involved in computing accel, speed, pos for acceleration/deceleration phases for an s-curve shaped speed profile.
+The [scurve-stepper library](scurve-stepper/README.md) to control stepper motor scurve motion type is provided.
 
 For symbolic calculus [AngouriMath](https://github.com/asc-community/AngouriMath) library was used.
 
