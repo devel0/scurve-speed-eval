@@ -20,7 +20,7 @@ Show how s-curve speed type can be obtained.
 
 ## Description
 
-The [scurve-stepper library](scurve-stepper/README.md) to control stepper motor scurve motion type is provided.
+The [scurve-stepper library](scurve-impulse-stepper/README.md) to control stepper motor scurve motion type is provided.
 
 For symbolic calculus [AngouriMath](https://github.com/asc-community/AngouriMath) library was used.
 
