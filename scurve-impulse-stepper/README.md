@@ -40,7 +40,7 @@ For example, follow [nema17 torque curve](https://www.rta.it/en/product/2562-ste
 - 0.4krpm~=6.7rps max torque is 0.6Nm~=6kgcm
 - 0.8krpm~=13.4rps max torque is 0.22Nm~=2.2kgcm
 
-![](data/img/nema17-torque-curve.png)
+<img src="data/img/nema17-torque-curve.png" width=400/>
 
 - case1 : transmitted target speed supposed 3.3rps~=0.2krpm
     - without transmission gear (ts=3.3rps~=0.2krpm) : maxTorque~=7kgcm
