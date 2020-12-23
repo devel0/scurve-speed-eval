@@ -35,7 +35,7 @@ Todo that you need the torque curve torque vs speed from motor datasheet, then k
 
 Acceleration max using impulse motion results from amax=4s/d then torque=Fl ; now, watching at datasheet torque curve you can find that in some cases use of load transmission mechanism such as gearbox can lead to better results.
 
-For example, follow [nema17 torque curve](https://www.rta.it/en/product/2562-stepping-motor-103-h7123-0440) @48V where:
+For example, follow [nema17 torque curve](https://www.rta.it/uploads/103-H7123-0440.pdf) @48V where:
 - 0.2krpm~=3.3rps max torque is 0.7Nm~=7kgcm
 - 0.4krpm~=6.7rps max torque is 0.6Nm~=6kgcm
 - 0.8krpm~=13.4rps max torque is 0.22Nm~=2.2kgcm
