@@ -13,6 +13,7 @@
       - [nucleo-144 **stm32-f767zi**](#nucleo-144-stm32-f767zi)
   * [Debugging](#debugging)
   * [How this project was built](#how-this-project-was-built)
+  * [Future works](#future-works)
 <!-- TOCEND -->
 
 ## Description
@@ -37,7 +38,8 @@ This scurve impulse stepper library can be of help if you have to control specif
 
 Of course you have to choose right motor and load transmission mechanism.
 
-Todo that you need the torque/speed curve from motor datasheet, then knowing the targetspeed (s=2p/d), force applied (F) and lever arm length (l) you will know how much max torque can applied without that the motor exit its safe region to ensure motion without lost of pulse or motor blocking.
+Todo that you need the torque/speed curve from motor datasheet, then knowing the targetspeed (s=2p/d), force applied (F) and lever arm length (l) you will know how much max torque required and comparing with the diagram know allowableTorque that can applied without that the motor exit its safe region to ensure motion without lost of pulse or motor blocking.
+A safety factor sf=allowableTorque/requiredTorque >= 1 ( suggested 5 or 10 ) is an indicator that need to be reported in a project design to describe the level of safetiness in load sizing.
 
 Acceleration max using impulse motion results from amax=4s/d then torque=Fl ; now, watching at datasheet torque curve you can find that in some cases use of load transmission mechanism such as gearbox can lead to better results.
 
@@ -360,3 +362,7 @@ debug_build_flags = -O0 -g -ggdb
 References:
 - [Creating Library](https://docs.platformio.org/en/latest/librarymanager/creating.html?utm_medium=piohome&utm_source=platformio)
 - [library.json](https://docs.platformio.org/en/latest/librarymanager/config.html)
+
+## Future works
+
+As evolution of [this project](https://github.com/devel0/scurve-speed-eval) will be a generic library to drive stepper motor using scurve velocity profile to allow various type of motion where you can constrain on speed, accel, position, duration.
