@@ -37,7 +37,7 @@ This scurve impulse stepper library can be of help if you have to control specif
 
 Of course you have to choose right motor and load transmission mechanism.
 
-Todo that you need the torque curve torque vs speed from motor datasheet, then knowing the targetspeed (s=2p/d), force applied (F) and lever arm length (l) you will know how much max torque can applied without that the motor exit its safe region to ensure motion without lost of pulse or motor blocking.
+Todo that you need the torque/speed curve from motor datasheet, then knowing the targetspeed (s=2p/d), force applied (F) and lever arm length (l) you will know how much max torque can applied without that the motor exit its safe region to ensure motion without lost of pulse or motor blocking.
 
 Acceleration max using impulse motion results from amax=4s/d then torque=Fl ; now, watching at datasheet torque curve you can find that in some cases use of load transmission mechanism such as gearbox can lead to better results.
 
