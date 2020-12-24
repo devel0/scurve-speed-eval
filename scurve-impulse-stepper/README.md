@@ -52,10 +52,10 @@ For example, follow [nema17 torque curve](https://www.rta.it/uploads/103-H7123-0
 
 - case1 : transmitted target speed supposed 3.3rps~=0.2krpm
     - without transmission gear (ts=3.3rps~=0.2krpm) : maxTorque~=7kgcm
-    - with transmission gear (ts=6.7rps~=0.4krpm) : maxTorque=2*6kgcm=12kgcm
+    - with transmission gear 1:2 (ts=6.7rps~=0.4krpm) : maxTorque=2*6kgcm=12kgcm
 - case2 : transmitted target speed supposed 6.7rps~=0.4krpm
     - without transmission gear (ts=6.7rps~=0.4krpm) : maxTorque~=6kgcm
-    - with transmission gear (ts=13.4rps~=0.8krpm) : maxTorque=2*2.2kgcm=4.4kgcm
+    - with transmission gear 1:2 (ts=13.4rps~=0.8krpm) : maxTorque=2*2.2kgcm=4.4kgcm
 
 The above cases shows that in some situation the use of transmission mechanism increase effective torque ( case1 ) while decrease for others ( case2 ) because of the torque/speed curve shape.
 
