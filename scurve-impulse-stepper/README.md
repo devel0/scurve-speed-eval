@@ -61,7 +61,7 @@ The above cases shows that in some situation the use of transmission mechanism i
 
 ## Examples
 
-to run example choose which on by uncomment in examples/example.h then C-s-p `PlatformIO: Upload` and watch output at `PlatformIO: Serial Monitor`.
+to run example choose which one by uncomment in examples/example.h then C-s-p `PlatformIO: Upload` and watch output at `PlatformIO: Serial Monitor`.
 
 ### example01
 
@@ -143,7 +143,7 @@ Logic analyzer:
 
 ### example02
 
-This example drive 10 motors at same time of 390ms with waiting of 2s generating an impulses from 0.125rev to 3rev issueing target speed for the 3rev case of
+This example drive 10 motors at same time of 390ms with waiting of 2s generating impulses from 0.125rev to 3rev issueing target speed for the 3rev case of
 
 <!-- $$
 \large
