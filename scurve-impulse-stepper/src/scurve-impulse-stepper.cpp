@@ -61,7 +61,7 @@ void SCurveImpulseStepper::control()
 
     auto cur_t = timer.elapsed_time();
 
-    uint64_t cur_t_us = chrono_us(cur_t);
+    double cur_t_us = chrono_us(cur_t);
     double t_us = cur_t_us - chrono_us(motion_start);
 
     bool time_exceeded = t_us > d_us;
@@ -92,7 +92,7 @@ void SCurveImpulseStepper::control()
 
     if (pulse_pin != 1 && (pulse_executed < pulse_expected))
     {
-        uint64_t now_period_us = chrono_us(cur_t - current_period_start);
+        auto now_period_us = chrono_us(cur_t - current_period_start);
         // adjust
         double rp = current_period_us;
         if (pulse_executed < pulse_expected)
