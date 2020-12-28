@@ -152,7 +152,12 @@ $$ -->
 
 <div align="center"><img src="https://render.githubusercontent.com/render/math?math=%5Clarge%0As%3D%5Cfrac%7B2%5Ccdot%20p%7D%7Bd%7D%3D%5Cfrac%7B2%5Ccdot%203%20rev%7D%7B0.39%20s%7D%3D15.4%5Cfrac%7Brev%7D%7Bs%7D"></div>
 
-:point_right: use upload method insted of debug mode because of optimizations
+:point_right: use upload method insted of debug mode because of optimizations or you may get follow
+
+```
+m[1] pulse_executed: 924   pulse_expected: 1200   motion_dur: 390ms   period_min: 187us
+ERROR
+```
 
 ```cpp
 #include <mbed.h>
