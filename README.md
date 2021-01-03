@@ -1,5 +1,7 @@
 # scurve speed eval
 
+:news: updated version [here](https://github.com/devel0/iot-stepper-motor)
+
 Show how s-curve speed type can be obtained.
 
 <img src="data/img/demo.gif" width="700"/>
