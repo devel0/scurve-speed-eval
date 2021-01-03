@@ -18,6 +18,8 @@
 
 ## Description
 
+:point_right: updated version [here](https://github.com/devel0/iot-stepper-motor)
+
 Library to control stepper motor [scurve impulse](https://github.com/devel0/scurve-speed-eval) type motion for ststm32 platform, mbed os framework.
 
 Keynotes:
@@ -373,3 +375,5 @@ References:
 ## Future works
 
 As evolution of [this project](https://github.com/devel0/scurve-speed-eval) will be a generic library to drive stepper motor using scurve velocity profile to allow various type of motion where you can constrain on speed, accel, position, duration.
+
+- [iot-stepper-motor](https://github.com/devel0/iot-stepper-motor)
