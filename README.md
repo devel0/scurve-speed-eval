@@ -1,7 +1,5 @@
 # scurve speed eval
 
-:point_right: updated version [here](https://github.com/devel0/iot-stepper-motor)
-
 Show how s-curve speed type can be obtained.
 
 <img src="data/img/demo.gif" width="700"/>
@@ -11,8 +9,7 @@ Show how s-curve speed type can be obtained.
 <!-- TOC -->
 - [scurve speed eval](#scurve-speed-eval)
   * [Description](#description)
-  * [Example](#example)
-  * [Implementation](#implementation)
+  * [Example](#example)  
   * [Prerequisites](#prerequisites)
   * [Quickstart](#quickstart)
   * [How this project was built](#how-this-project-was-built)
@@ -145,10 +142,6 @@ dotnet run --project examples/scurve-xlsx
 ```
 
 and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by applying above formulas and doing some test calc about max allowable torque based on motion and supposed load.
-
-## Implementation
-
-A [library](scurve-impulse-stepper/README.md) to drive scurve impulse stepper motors is provided for mbed stm32.
 
 ## Prerequisites
 
