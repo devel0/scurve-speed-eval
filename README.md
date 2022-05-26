@@ -38,6 +38,8 @@ For preliminary analysis [sympy](https://github.com/sympy/sympy) with [this](dat
 - [stretching][3] the accel function so that its integral, the speed, achieve targetspeed
 - acceleration results as [this][4]
 
+:point_right: hit F5 if math not rendered
+
 $$
 \large
 accel(t)=\frac{2\cdot s}{d}\cdot\left(1-\cos\left(\frac{4\cdot\pi\cdot t}{d}\right)\right)
