@@ -7,13 +7,13 @@ Show how s-curve speed type can be obtained.
 ---
 
 <!-- TOC -->
-- [scurve speed eval](#scurve-speed-eval)
-  * [Description](#description)
-  * [Example](#example)  
-  * [Prerequisites](#prerequisites)
-  * [Quickstart](#quickstart)
-  * [How this project was built](#how-this-project-was-built)
-  * [References](#references)
+* [Description](#description)
+* [Performance considerations](#performance-considerations)
+* [Example](#example)
+* [Prerequisites](#prerequisites)
+* [Quickstart](#quickstart)
+* [How this project was built](#how-this-project-was-built)
+* [References](#references)
 <!-- TOCEND -->
 
 ---
@@ -114,6 +114,10 @@ $$
 [9]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L65
 [10]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L69
 [11]: https://github.com/devel0/scurve-speed-eval/blob/435327c86769302a22fa54fb6b349a60a1b640d1/gui%2FProgram.cs#L72
+
+## Performance considerations
+
+For a realtime purpose a bezier approach should be used like the one implemented in the [Marlin](https://github.com/MarlinFirmware/Marlin/blob/d364babbc0cdb73337d86e2c4fd9170b46b7361a/Marlin/src/module/stepper.cpp#L651).
 
 ## Example
 
