@@ -6,16 +6,13 @@ Show how s-curve speed type can be obtained.
 
 ---
 
-<!-- TOC -->
-- [scurve speed eval](#scurve-speed-eval)
-  - [Description](#description)
-  - [Performance considerations](#performance-considerations)
-  - [Example](#example)
-  - [Prerequisites](#prerequisites)
-  - [Quickstart](#quickstart)
-  - [How this project was built](#how-this-project-was-built)
-  - [References](#references)
-<!-- TOCEND -->
+- [Description](#description)
+- [Performance considerations](#performance-considerations)
+- [Example](#example)
+- [Prerequisites](#prerequisites)
+- [Quickstart](#quickstart)
+- [How this project was built](#how-this-project-was-built)
+- [References](#references)
 
 ---
 
@@ -135,7 +132,7 @@ and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by ap
 ## Prerequisites
 
 - [vscode](https://code.visualstudio.com/)
-- [dotnet 5.0](https://dotnet.microsoft.com/download)
+- [dotnet 7.0](https://dotnet.microsoft.com/download)
 
 ## Quickstart
 
@@ -163,7 +160,7 @@ dotnet sln add scurve-speed-eval.csproj
 dotnet sln add .
 dotnet add reference ../netcore-util/netcore-util
 dotnet add reference ../netcore-sci/netcore-sci
-dotnet add package AngouriMath --version 1.2.0-preview.5
+dotnet add package AngouriMath --version 1.3.0
 dotnet add package Avalonia.Desktop --version 0.10.0-preview6
 dotnet add package OxyPlot.Avalonia --version 2.1.0-20200725.1
 dotnet add package UnitsNet --version 4.76.0
