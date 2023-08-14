@@ -7,13 +7,14 @@ Show how s-curve speed type can be obtained.
 ---
 
 <!-- TOC -->
-* [Description](#description)
-* [Performance considerations](#performance-considerations)
-* [Example](#example)
-* [Prerequisites](#prerequisites)
-* [Quickstart](#quickstart)
-* [How this project was built](#how-this-project-was-built)
-* [References](#references)
+- [scurve speed eval](#scurve-speed-eval)
+  - [Description](#description)
+  - [Performance considerations](#performance-considerations)
+  - [Example](#example)
+  - [Prerequisites](#prerequisites)
+  - [Quickstart](#quickstart)
+  - [How this project was built](#how-this-project-was-built)
+  - [References](#references)
 <!-- TOCEND -->
 
 ---
@@ -139,8 +140,14 @@ and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by ap
 ## Quickstart
 
 ```sh
-git clone https://github.com/devel0/netcore-sci
 git clone https://github.com/devel0/netcore-util
+cd netcore-util
+git checkout bd8626104f4b5a9cb9de5db624cebbcd77a8b384
+
+git clone https://github.com/devel0/netcore-sci
+cd netcore-sci
+git checkout 151451d5cd40e8ccebf93718379e8d72dbadce86
+
 git clone https://github.com/devel0/scurve-speed-eval
 cd scurve-speed-eval
 dotnet build
