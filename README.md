@@ -132,7 +132,7 @@ and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by ap
 ## Prerequisites
 
 - [vscode](https://code.visualstudio.com/)
-- [dotnet 7.0](https://dotnet.microsoft.com/download)
+- [dotnet 8.0](https://dotnet.microsoft.com/download)
 
 ## Quickstart
 
@@ -140,10 +140,12 @@ and it will produce follow [output.xlsx](examples/scurve-xlsx/output.xlsx) by ap
 git clone https://github.com/devel0/netcore-util
 cd netcore-util
 git checkout bd8626104f4b5a9cb9de5db624cebbcd77a8b384
+cd ..
 
 git clone https://github.com/devel0/netcore-sci
 cd netcore-sci
 git checkout 151451d5cd40e8ccebf93718379e8d72dbadce86
+cd ..
 
 git clone https://github.com/devel0/scurve-speed-eval
 cd scurve-speed-eval
